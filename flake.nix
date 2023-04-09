@@ -18,7 +18,7 @@
       imports = [ inputs.haskell-flake.flakeModule ];
       perSystem = { self', pkgs, ... }: {
         haskellProjects.default = {
-          # packages.example.root = ./.;  # This value is detected based on .cabal files
+          packages.animate.root = ./.;  # This value is detected based on .cabal files
           overrides = self: super:  with pkgs.haskell.lib; {
             reanimate =  dontCheck (self.callCabal2nix "reanimate" inputs.reanimate {}); 
             reanimate-svg = appendBuildFlag  (dontCheck (self.callCabal2nix  "reanimate-svg" inputs.reanimate-svg  {})) "--ghc-option=-fsimpl-tick-factor=200"; 
@@ -30,7 +30,7 @@
           # };
         };
         # haskell-flake doesn't set the default package, but you can do it here.
-        packages.default = self'.packages.example;
+        packages.default = self'.packages.animate;
       };
     };
 }

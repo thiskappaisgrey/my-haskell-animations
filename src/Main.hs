@@ -59,14 +59,14 @@ main :: IO ()
 main = reanimate $ myEnv (createTree `andThen` staticFrame 2 t)
 
 t :: SVG
-t = renderExprPosL (0, 2) $ exprToPosTree exTree
+t = renderExprPosL (0, 3) $ exprToPosTree exTree
 
 -- TODO draw the lines between the nodes to make a tree
 createTree :: Animation
 createTree =
   let
     textList = exprPosToList (2, 0) $ exprToPosText exTree
-    treeList = exprPosToList (0, 2) $ exprToPosTree exTree
+    treeList = exprPosToList (0, 3) $ exprToPosTree exTree
     l = zip textList treeList
     renderNode a (x, y) = translate x y $ toSVG a
     renderNode' (Node (x, y) a) = translate x y $ toSVG a
